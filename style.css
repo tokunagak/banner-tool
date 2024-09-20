@@ -1,3 +1,12 @@
+@font-face {
+	font-family: 'Sukhumvit';
+    src: url('./fonts/sukhumvit-set/SukhumvitSet-Thin.ttf') format('truetype');
+}
+
+body {
+    font-family: 'Sukhumvit', Merriweather,'Helvetica Neue',Arial,sans-serif;
+}
+
 .ly_cont_boy {
     height: 100vh;
 }
