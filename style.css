@@ -1,6 +1,7 @@
 @font-face {
 	font-family: 'Sukhumvit';
-    src: url('./fonts/sukhumvit-set/SukhumvitSet-Thin.ttf') format('truetype');
+    /* src: url('./fonts/sukhumvit-set/SukhumvitSet-Thin.ttf') format('truetype'); */
+    src: url('./fonts/sukhumvit-set/SukhumvitSet-Bold.ttf') format('truetype');
 }
 
 body {
@@ -159,13 +160,13 @@ body {
 
 .bl_display_ttl {
     font-weight: bold;
-    font-size: clamp(20px, 2.5vw, 32px);
+    font-size: clamp(24px, 2.5vw, 42px);
 }
 
 .bl_display_subTtl {
     font-weight: bold;
-    font-size: clamp(18px, 1.5vw, 25px);
-    margin-top: max(2.954%, 5px);
+    font-size: clamp(21px, 2vw, 36px);
+    /* margin-top: max(2.954%, 5px); */
 }
 
 .bl_display_img {
