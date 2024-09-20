@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>アスペクト比 16:5 のレスポンシブデザイン</title>
+  <style>
+    /* コンテナのスタイル */
+    .responsive-box {
+      width: 100%;
+      max-width: 800px; /* 最大幅を800pxに設定 */
+      background-color: lightgray;
+      margin: 0 auto; /* 中央寄せ */
+      position: relative;
+      overflow: hidden; /* 内部コンテンツがはみ出さないように */
+    }
+
+    /* コンテンツのスタイル */
+    .content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      background-color: rgba(0, 0, 0, 0.2); /* 透明な背景を追加 */
+    }
+  </style>
+</head>
+<body>
+
+  <div class="responsive-box" id="responsiveBox">
+    <div class="content">
+      アスペクト比 16:5 のボックス
+    </div>
+    <img src="C:\Users\tokun\Desktop\Sub 90.jpg" alt="">
+  </div>
+
+  <script>
+    // アスペクト比を保持するための関数
+    function adjustHeight() {
+      const box = document.getElementById('responsiveBox');
+      const width = box.offsetWidth;
+      const aspectRatio = 16 / 5;
+      box.style.height = `${width / aspectRatio}px`;
+    }
+
+    // 初期表示時に高さを調整
+    window.addEventListener('load', adjustHeight);
+
+    // ウィンドウサイズ変更時に高さを調整
+    window.addEventListener('resize', adjustHeight);
+  </script>
+
+</body>
+</html>
