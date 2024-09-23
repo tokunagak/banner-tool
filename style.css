@@ -81,18 +81,50 @@ body {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
-    font-size: 1.25rem;
-    font-weight: bold;
 }
 
 .bl_input_ttl > label,
 .bl_input_subTtl > label,
 .bl_input_color > label {
     width: 10rem;
+    font-weight: bold;
+    font-size: 1.25rem;
 }
+
+.bl_input_bgImage > label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
 
 .bl_input_wrapper {
     width: 100%;
+}
+
+.bl_input_wrapper.bl_input_wrapper__img {
+    height: 150px;
+    border: 1px solid #cccc;
+    position: relative;
+}
+
+.bl_input_wrapper.bl_input_wrapper__img > input {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding-top: 12%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.bl_input_wrapper.bl_input_wrapper__img > img {
+    max-width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .bl_input_wrapper input {
@@ -129,6 +161,10 @@ body {
 }
 
 .bl_input_img > input {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding-top: 45%;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -174,6 +210,11 @@ body {
     display: flex;
     align-items: center;
     padding: 20px 10px;
+    /* 仮 */
+    /* background-image: url(./key_.png); */
+    background-position: -40px center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .bl_display_color {
