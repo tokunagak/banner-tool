@@ -2,35 +2,6 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // const inputImg = document.querySelector('#input-img');
-    // const imgElement = document.querySelector('#img');
-
-    // inputImg.addEventListener('change', (event) => {
-    //     const file = event.target.files[0];
-    //     if (!file) return;
-
-    //     const reader = new FileReader();
-    //     reader.onload = (event) => {
-    //         imgElement.src = event.target.result;
-    //         inputImg.classList.add('d-none'); // 画像が設定されたら、input-imgにd-noneクラスを付与
-    //     };
-    //     reader.readAsDataURL(file);
-    // });
-
-    // imgElement.addEventListener('click', () => {
-    //     imgElement.src = ''; 
-    //     inputImg.classList.remove('d-none'); // 画像が削除されたら、d-noneクラスを削除
-    //     inputImg.value = ''; // input type="file" のファイルをリセット
-    // });
-
-    // const adjustHeight = () => {
-    //     const boxes = document.querySelectorAll('.bl_display_body');
-    //     boxes.forEach((box) => {
-    //         const aspectRatio = 16 / 5;
-    //         box.style.height = `${box.offsetWidth / aspectRatio}px`;
-    //     });
-    // };
-
     const inputImg = document.querySelector('#input-img');
     const imgElement = document.querySelector('#img');
     const displayImages = document.querySelectorAll('.dis-img'); // 複数のdis-img要素を取得
@@ -41,12 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!file) return;
 
         const reader = new FileReader();
-        // reader.onload = (event) => {
-        //     imgElement.src = event.target.result;
-        //     disImgElement.src = event.target.result; // 追加: 同じ画像を #dis-img にも表示
-        //     inputImg.classList.add('d-none'); // 画像が設定されたら、input-imgにd-noneクラスを付与
-        // };
-        // reader.readAsDataURL(file);
         reader.onload = (event) => {
             imgElement.src = event.target.result;
             inputImg.classList.add('d-none'); // 画像が設定されたら、input-imgにd-noneクラスを付与
@@ -136,3 +101,68 @@ document.getElementById('download-link-bn2').addEventListener('click', function(
     event.preventDefault();
     downloadBanner('banner-2', 'banner2_2360x700.png');
 });
+
+// -----------------------------------------------------------------------------------
+// 言語判別関数
+function detectLanguage(text) {
+  const englishRegex = /^[A-Za-z\s]+$/;  // 英語 (ラテン文字)
+  const thaiRegex = /[\u0E00-\u0E7F]/;   // タイ語 (タイ文字)
+
+  if (englishRegex.test(text)) {
+    return '英語';
+  } else if (thaiRegex.test(text)) {
+    return 'タイ語';
+  } else {
+    return 'その他の言語';
+  }
+}
+
+// 言語判定に基づいてフォントを変更する関数
+function updateFontBasedOnLanguage(inputId, displayClass) {
+  const inputElement = document.getElementById(inputId);
+  const displayElements = document.querySelectorAll(displayClass); // 複数の要素を取得
+
+  inputElement.addEventListener('input', function() {
+    const text = this.value;
+    const detectedLanguage = detectLanguage(text);
+    let fontFamily = '';
+
+    if (detectedLanguage === '英語') {
+      fontFamily = 'A-OTF Shin Go Pro R';
+    } else if (detectedLanguage === 'タイ語') {
+      fontFamily = 'Sukhumvit';
+    }
+
+    // 複数の要素にフォントファミリーを反映
+    displayElements.forEach(el => {
+      el.style.fontFamily = fontFamily;
+      el.textContent = text; // 入力されたテキストを反映
+    });
+  });
+}
+
+// タイトルとサブタイトルの入力欄を監視して言語判定を行う
+updateFontBasedOnLanguage('input-ttl', '.bl_display_ttl');
+updateFontBasedOnLanguage('input-sub', '.bl_display_subTtl');
+
+// -----------------------------------------------------------------------------------
+function updateFontSize(inputId, targetClass) {
+  const inputElement = document.getElementById(inputId);
+  const targetElements = document.querySelectorAll(targetClass); // 複数の要素を取得
+
+  inputElement.addEventListener('input', function() {
+    const fontSizePx = parseFloat(this.value); // 入力された値をpxで取得
+    if (!isNaN(fontSizePx) && fontSizePx > 0) {
+      const fontSizeRem = fontSizePx / 16; // pxをremに変換 (1rem = 16px)
+      
+      // フォントサイズをremで設定
+      targetElements.forEach(el => {
+        el.style.fontSize = `${fontSizeRem}rem`;
+      });
+    }
+  });
+}
+
+// タイトルとサブタイトルのフォントサイズを監視して変更
+updateFontSize('fz-ttl', '.bl_display_ttl');
+updateFontSize('fz-subTtl', '.bl_display_subTtl');
