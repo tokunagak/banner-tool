@@ -12,11 +12,11 @@ body {
     height: 100vh;
 }
 .ly_cont {
-    padding-top: 50px;
+    padding-top: 20px;
     padding-bottom: 60px;
 }
 .ly_cont_inner {
-    min-width: 800px;
+    /* min-width: 800px; */
     max-width: 1830px;
     padding-right: 15px;
     padding-left: 15px;
@@ -27,11 +27,11 @@ body {
 .el_lv1Heading {
     font-size: 2rem;
     font-weight: bold;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 
 .ly_workSpeace {
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 }
 
 .bl_input {
@@ -40,8 +40,6 @@ body {
     align-items: center;
     padding: 20px;
     border: 1px solid #ccc;
-    margin-right: auto;
-    margin-left: auto;
 } 
 
 .bl_input_area {
@@ -50,6 +48,21 @@ body {
 
 .bl_input_area >*:last-child {
     margin-bottom: 0;
+}
+
+@media screen and (max-width: 768px ) {
+    .bl_input {
+        display: block;
+    } 
+
+    .bl_input_area {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .sp-hide {
+        display: none;
+    }
 }
 
 .bl_input > *:last-child{
@@ -113,23 +126,23 @@ body {
     text-align: center;
 }
 
-/* -------------------------------------------------------------- */
-.bl_col {
-    display: flex;
-    align-items: center;
-
+@media screen and (max-width: 768px ) {
+    .bl_input_imgWarr {
+        margin-left: unset;
+    }
 }
+/* -------------------------------------------------------------- */
 
 .bl_display {
     width: 100%;
-    max-width: 812px;
+    max-width: 880px;
     margin-right: 30px;
     padding: 5px;
-    /* border: 1px solid #ccc; */
+    margin-bottom: 30px;
 }
 
 .bl_display:last-child {
-    margin-right: 0;
+    margin-bottom: 0;
 }
 
 .bl_boder {
@@ -143,7 +156,7 @@ body {
 }
 
 .bl_display_color {
-    width: 2.125%;
+    width: clamp(9.3px, 1.39vw, 18px);
 }
 
 .bl_display_color > span{
@@ -155,7 +168,8 @@ body {
 
 .bl_display_ttlWrapper {
     flex: 1;
-    padding-left: 20px;
+    /* padding-left: 20px; */
+    padding-left: clamp(10px, 1vw, 20px);
 }
 
 .bl_display_ttl {
@@ -186,20 +200,21 @@ body {
 }
 
 .bl_btnWrapper {
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .el_btn {
     display: inline-block;
-    width: 150px;
+    width: 100px;
     max-width: 100%;
-    padding: 20px 10px;
+    padding: 10px 5px;
     border: 1px solid transparent;
     border-radius: 5px;
     box-sizing: border-box;
     background-color: #130fc9;
     box-shadow: 0 3px 6px rgba(0,0,0, .16);
     color: #fff;
+    font-size: 0.8125rem;
     text-align: center;
     text-decoration: none;
     transition: .25s;
