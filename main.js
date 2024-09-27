@@ -210,51 +210,41 @@ updateFontSize('fz-subTtl', '.bl_display_subTtl');
 // -----------------------------------------------------------------------------------
 // オプションに切り替える
 document.addEventListener('DOMContentLoaded', () => {
-    const options = document.querySelectorAll('.option');
+    const selectElement = document.querySelector('#input-selOp'); // <select> 要素を取得
     const displayBodies = document.querySelectorAll('.bl_display_body'); // 複数の .bl_display_body を取得
-    const spans = document.querySelectorAll('.bl_display_color > span'); // 複数の span を取得
+    const spans = document.querySelectorAll('.bl_display_color > span'); // 複数の .bl_display_color > span を取得
 
-    options.forEach(option => {
-        option.addEventListener('click', (event) => {
-            event.preventDefault(); // デフォルトのリンク動作を無効化
+    // 動的に select 要素の配下にある option の value を取得
+    const classValues = Array.from(selectElement.options).map(option => option.value);
 
-            const selectedId = option.id; // クリックされた要素のIDを取得
+    // select の変更イベントを監視
+    selectElement.addEventListener('change', () => {
+        const selectedValue = selectElement.value; // 選択された value を取得
 
-            // すべての .bl_display_body のクラスをリセット
+        // "original" が選択された場合はクラスを何も付与しない
+        if (selectedValue === 'original') {
+            // すべてのクラスを削除
             displayBodies.forEach(body => {
-                body.classList.remove('mitsu', 'makita'); // 他のクラスを削除
-                body.classList.add(selectedId); // クリックされたIDをクラスとして追加
+                body.classList.remove(...classValues); // 配列内のすべてのクラスを削除
             });
 
-            // .bl_display_color > span に d-none クラスを付与
+            // span 要素の d-none クラスを削除
             spans.forEach(span => {
-                span.classList.add('d-none'); // 確実に d-none を付与
+                span.classList.remove('d-none');
             });
-        });
+        } else {
+            // "mitsu", "makita" などが選択された場合
+            displayBodies.forEach(body => {
+                // 他のクラスを削除し、選択されたクラスを追加
+                body.classList.remove(...classValues); // 配列内のすべてのクラスを削除
+                body.classList.add(selectedValue); // 選択された value を追加
+            });
+
+            // span 要素に d-none クラスを付与して非表示
+            spans.forEach(span => {
+                span.classList.add('d-none');
+            });
+        }
     });
 });
 
-// クリックされたオプションが変更された場合、既存クラスを削除し、新しいクラスを追加
-options.forEach(option => {
-    option.addEventListener('click', (event) => {
-        event.preventDefault();
-
-        const selectedId = option.id; // 現在クリックされた要素のIDを取得
-
-        // すべての .bl_display_body から既存のIDクラスを削除
-        displayBodies.forEach(body => {
-            body.classList.remove('mitsu', 'makita'); // 他のクラスを削除
-            body.classList.add(selectedId); // 新しいクラスを追加
-        });
-
-        // .bl_display_color > span に d-none クラスを付与または削除
-        const spans = document.querySelectorAll('.bl_display_color > span');
-        spans.forEach(span => {
-            if (!span.classList.contains('d-none')) {
-                span.classList.add('d-none'); // クラスがなければ追加
-            } else {
-                span.classList.remove('d-none'); // クラスがあれば削除
-            }
-        });
-    });
-});

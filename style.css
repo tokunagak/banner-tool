@@ -114,7 +114,8 @@ body {
 
 .bl_input_ttl,
 .bl_input_subTtl,
-.bl_input_color {
+.bl_input_color,
+.bl_selectOption {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
@@ -122,8 +123,9 @@ body {
 
 .bl_input_ttl > label,
 .bl_input_subTtl > label,
-.bl_input_color > label {
-    width: 10rem;
+.bl_input_color > label,
+.bl_selectOption > label {
+    width: 15rem;
     font-weight: bold;
     font-size: 1.25rem;
 }
@@ -164,7 +166,8 @@ body {
     transform: translate(-50%, -50%);
 }
 
-.bl_input_wrapper input {
+.bl_input_wrapper input,
+.bl_input_wrapper select {
     padding: 5px;
     font-size: 1rem;
 }
