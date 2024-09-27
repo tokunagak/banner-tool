@@ -206,3 +206,55 @@ function updateFontSize(inputId, targetClass) {
 // タイトルとサブタイトルのフォントサイズを監視して変更
 updateFontSize('fz-ttl', '.bl_display_ttl');
 updateFontSize('fz-subTtl', '.bl_display_subTtl');
+
+// -----------------------------------------------------------------------------------
+// オプションに切り替える
+document.addEventListener('DOMContentLoaded', () => {
+    const options = document.querySelectorAll('.option');
+    const displayBodies = document.querySelectorAll('.bl_display_body'); // 複数の .bl_display_body を取得
+    const spans = document.querySelectorAll('.bl_display_color > span'); // 複数の span を取得
+
+    options.forEach(option => {
+        option.addEventListener('click', (event) => {
+            event.preventDefault(); // デフォルトのリンク動作を無効化
+
+            const selectedId = option.id; // クリックされた要素のIDを取得
+
+            // すべての .bl_display_body のクラスをリセット
+            displayBodies.forEach(body => {
+                body.classList.remove('mitsu', 'makita'); // 他のクラスを削除
+                body.classList.add(selectedId); // クリックされたIDをクラスとして追加
+            });
+
+            // .bl_display_color > span に d-none クラスを付与
+            spans.forEach(span => {
+                span.classList.add('d-none'); // 確実に d-none を付与
+            });
+        });
+    });
+});
+
+// クリックされたオプションが変更された場合、既存クラスを削除し、新しいクラスを追加
+options.forEach(option => {
+    option.addEventListener('click', (event) => {
+        event.preventDefault();
+
+        const selectedId = option.id; // 現在クリックされた要素のIDを取得
+
+        // すべての .bl_display_body から既存のIDクラスを削除
+        displayBodies.forEach(body => {
+            body.classList.remove('mitsu', 'makita'); // 他のクラスを削除
+            body.classList.add(selectedId); // 新しいクラスを追加
+        });
+
+        // .bl_display_color > span に d-none クラスを付与または削除
+        const spans = document.querySelectorAll('.bl_display_color > span');
+        spans.forEach(span => {
+            if (!span.classList.contains('d-none')) {
+                span.classList.add('d-none'); // クラスがなければ追加
+            } else {
+                span.classList.remove('d-none'); // クラスがあれば削除
+            }
+        });
+    });
+});

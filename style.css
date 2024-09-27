@@ -5,8 +5,51 @@
          url('./fonts/a-otf-shin-go-pro/AOTFShinGoProRegular.otf') format('truetype');
 }
 
+a{
+    text-decoration: none;
+    color: #222;
+    cursor: pointer;
+}
+
 body {
     font-family: sans-serif;
+}
+
+.ly_header {
+    margin-top: 20px;
+}
+
+.ly_header_inner {
+    max-width: 1830px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.el_lv1Heading {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.bl_headerList > ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.bl_headerList > ul li {
+    margin-right: 20px;
+}
+
+.bl_headerList > ul li:last-child {
+    margin-right: 0;
+}
+
+.bl_headerList_link {
+    font-weight: bold;
+    font-size: 1.025rem;
 }
 
 .ly_cont_boy {
@@ -25,12 +68,6 @@ body {
     margin-left: auto;
 }
 
-.el_lv1Heading {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 20px;
-}
-
 .ly_workSpeace {
     margin-bottom: 20px;
 }
@@ -39,7 +76,7 @@ body {
     max-width: 880px;
     display: flex;
     justify-content: space-between;
-    /* align-items: center; */
+    align-items: center;
     padding: 20px;
     border: 1px solid #ccc;
     margin-right: auto;
@@ -210,9 +247,6 @@ body {
     display: flex;
     align-items: center;
     padding: 20px 10px;
-    /* 仮 */
-    /* background-image: url(./key_.png); */
-    background-position: -40px center;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -222,11 +256,15 @@ body {
     width: 2.218%;
 }
 
-.bl_display_color > span{
+.bl_display_color > span {
     display: inline-block;
     width: 100%;
     aspect-ratio: 1653/4000;
     background-color: #222;
+}
+
+.bl_display_color > span.d-none {
+    display: none;
 }
 
 .bl_display_ttlWrapper {
@@ -291,3 +329,12 @@ body {
 }
 
 /* -------------------------------------------------------------- */
+/* 
+ * オプションの背景設定
+ *
+ */
+
+.bl_display_body.mitsu {
+    background-image: url(./image/key_.png);
+    background-position: 99% center;
+}
