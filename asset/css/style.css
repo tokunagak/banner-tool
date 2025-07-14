@@ -1,8 +1,11 @@
 @font-face {
-	font-family: 'Sukhumvit','A-OTF Shin Go Pro R';
-    /* src: url('./fonts/sukhumvit-set/SukhumvitSet-Thin.ttf') format('truetype'); */
-    src: url('./fonts/sukhumvit-set/SukhumvitSet-Bold.ttf') format('truetype'),
-         url('./fonts/a-otf-shin-go-pro/AOTFShinGoProRegular.otf') format('truetype');
+    font-family: 'Sukhumvit';
+    src: url('./fonts/sukhumvit-set/SukhumvitSet-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'A-OTF Shin Go Pro R';
+    src: url('./fonts/a-otf-shin-go-pro/AOTFShinGoProRegular.otf') format('truetype');
 }
 
 a{
