@@ -170,8 +170,7 @@ function updateFontBasedOnLanguage(inputId, displayClass) {
         let fontFamily = '';
 
         if (detectedLanguage === '英語') {
-            // fontFamily = 'A-OTF Shin Go Pro R';
-            fontFamily = 'sans-serif';
+            fontFamily = 'A-OTF Shin Go Pro R';
             
         } else if (detectedLanguage === 'タイ語') {
             fontFamily = 'Sukhumvit';
