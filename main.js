@@ -148,7 +148,7 @@ document.getElementById('download-link-bn2').addEventListener('click', function(
 // -----------------------------------------------------------------------------------
 // 言語判別関数
 function detectLanguage(text) {
-    const englishRegex = /^[A-Za-z\s]+$/; // 英語
+    const englishRegex = /^[\u0000-\u007F]+$/; // 英語
     const thaiRegex = /[\u0E00-\u0E7F]/; // タイ語
 
     if (englishRegex.test(text)) {
@@ -174,6 +174,8 @@ function updateFontBasedOnLanguage(inputId, displayClass) {
             fontFamily = 'Alumni Sans';
         } else if (detectedLanguage === 'タイ語') {
             fontFamily = 'Sukhumvit';
+        } else {
+            fontFamily = '';
         }
 
         displayElements.forEach(el => {
