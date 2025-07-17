@@ -10,7 +10,7 @@
 
 @font-face {
     font-family: 'Alumni Sans';
-    src: url('./fonts/static/AlumniSans-ExtraBold.ttf') format('truetype');
+    src: url('./fonts/static/AlumniSans-Bold.ttf') format('truetype');
 }
 
 a{
